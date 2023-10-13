@@ -3,8 +3,6 @@ import { createI18n } from 'vue-i18n';
 import ArcoVue, { addI18nMessages, useLocale } from '@web-vue/components/index';
 import ArcoVueIcon from '@web-vue/components/icon';
 import enUS from '@web-vue/components/locale/lang/en-us';
-import renderNavBar from '@arco-design/arco-vue-docs-navbar';
-import packages from '@web-vue/package.json';
 import router from './router';
 import locale from './locale';
 import App from './app.vue';
@@ -42,17 +40,6 @@ const handleLanguageChange = (lang: string) => {
 handleLanguageChange(lang);
 
 checkLogin().then(() => {
-  try {
-    renderNavBar({
-      version: packages.version,
-      lang,
-      handleLanguageChange,
-    });
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error(e);
-  }
-
   const i18n = createI18n({
     legacy: false,
     locale: lang,

@@ -6,28 +6,6 @@
         { 'arco-vue-body-has-notice': showGlobalNotice },
       ]"
     >
-      <a-alert
-        v-if="showGlobalNotice"
-        class="site-global-notice"
-        :show-icon="false"
-        closable
-        banner
-        @close="handleCloseGlobalNotice"
-      >
-        <a
-          href="https://bytedance.feishu.cn/docx/doxcnHMY3EFM4N7GK8H2no1mZve"
-          rel="Arco Global Notice"
-          target="_blank"
-        >
-          <span class="content">
-            Arco Toolbox Figma 插件工具全新发布，有奖公测中~
-          </span>
-          <b>
-            查看更多
-            <icon-right />
-          </b>
-        </a>
-      </a-alert>
       <aside-nav :show="showNav" @button-click="toggleNav" />
       <router-view />
     </div>
@@ -41,15 +19,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  provide,
-  reactive,
-  ref,
-  watch,
-  onMounted,
-  onBeforeUnmount,
-} from 'vue';
+import { defineComponent, provide, reactive, ref, watch, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { PageDurationTracker, teaLog } from '@arco-materials/site-utils';
 import { collapseInjectionKey } from './context';
@@ -113,10 +83,6 @@ export default defineComponent({
       tracker = new PageDurationTracker((params) => {
         teaLog('page_view', { ...params, url_path: originPath });
       });
-    });
-
-    onBeforeUnmount(() => {
-      tracker = null;
     });
 
     watch(

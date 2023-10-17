@@ -59,7 +59,7 @@ export default (filePath: string) => {
       };
 
       if (componentDoc.props.length) {
-        componentDocList.push(componentDoc);
+        componentDocList.push(componentDoc as any);
       }
     });
   }

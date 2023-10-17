@@ -1,101 +1,81 @@
 
-> English | [简体中文](./CONTRIBUTING.zh-CN.md)
-# Contributing
+## 行为准则
 
-Thank you for taking your time to contribute and make this project better! Here are some guidelines to help you get started. Please make sure to take a moment and read through them before submitting your contributions.
+该项目有一份 [行为准则](./CODE_OF_CONDUCT.md)，希望参与项目的贡献者都能严格遵守。
 
-## Code of Conduct
+## 透明的开发
 
-This project is governed by the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md). By participating, you are expected to adhere to it.
+所有工作都直接透明地在 GitLab 上进行。核心团队成员和外部贡献者的 pull requests 都需要经过相同的 review 流程。
 
-## Open Development
+## 提交 Pull Request
 
-All work happens directly on GitHub. Both core team members and external contributors send pull requests which go through the same review process.
+1. Fork [此仓库](https://github.com/arco-design/arco-design-vue)，从 `main` 创建分支。新功能实现请发 pull request 到 `feature` 分支。其他更改发到 `main` 分支。
+2. 使用 `npm install -g` 安装 `lerna` 和 `yarn` 等基础包。
+3. 执行 `yarn install` 安装 `workspaces` 中各个包的依赖(如果遇到 `YN0018` 错误，可以使用 `YARN_CHECKSUM_BEHAVIOR=update yarn` 进行安装)。
+4. 执行 `npm run init` 初始化项目。
+5. 执行 `npm run start` 启动和预览站点.
+6. 对代码库进行更改。如果适用的话，请确保写了相应的测试。
+7. 确认执行 `npm run test` 后所有的测试都是通过的。
+8. 提交 git commit, 请同时遵守 [Commit 规范](#commit-指南)。
+9. 提交 pull request, 如果有对应的 issue，请进行[关联](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)。
 
-## Semantic Versioning
+## Commit 指南
 
-This project follows semantic versioning. We release patch versions for bug fixes or other changes that do not change the behavior of the API, minor versions for new features that are backward-compatible, and major versions for any breaking changes.
-
-Every significant change is documented in the changelog file.
-
-## Reporting Issues
-
-We use [Github issues](https://github.com/arco-design/arco-design-vue/issues) for bug reports and feature requests. Before reporting an issue, please make sure you have searched for similar [issues](https://github.com/arco-design/arco-design-vue/issues) as they may have been already answered or being fixed. A new issue should be submitted via [issue helper](https://arco.design/issue-helper?repo=arco-design-vue). For bug reporting, please include the minimum code that can be used to reproduce the problem. For feature request, please specify what changes you want and what behavior you expect.
-
-## Sending a pull request
-
-1. Fork [the repository](https://github.com/arco-design/arco-design-vue) and create your branch from `main`. For new feature, please submit your changes directly to the `feature` branch. Other changes should go against `main` branch.
-2. Use `npm install -g` to install basic packages such as `lerna` and `yarn`.
-3. Use `yarn install` to install the dependencies of each package in `workspaces` (If you encounter a `YN0018` error, you can use `YARN_CHECKSUM_BEHAVIOR=update yarn` to install).
-4. Use `npm run init` to initialize the project.
-5. Run `npm run start` to start and preview site.
-6. Make changes to the codebase. Please add tests if applicable.
-7. Make sure the test suite passes with `npm run test`.
-8. Commit your changes, adhering to the [Commit Guidelines](#commit-guidelines)
-9. Open a new pull request, [referencing corresponding issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) if available.
-
-## Commit Guidelines
-
-Commit messages are required to follow the [conventional-changelog standard](https://www.conventionalcommits.org/en/v1.0.0/):
+Commit messages 请遵循[conventional-changelog 标准](https://www.conventionalcommits.org/en/v1.0.0/)：
 
 ```bash
-<type>[optional scope]: <description>
+<类型>[可选 范围]: <描述>
 
-[optional body]
+[可选 正文]
 
-[optional footer(s)]
+[可选 脚注]
 ```
 
-### Commit types
+### Commit 类型
 
-The following is a list of commit types:
+以下是 commit 类型列表:
 
-- feat: A new feature or functionality
-- fix: A bug fix
-- docs: Documentation only changes
-- style: Code formatting or component style changes
-- refactor: Code changes that neither fixes a bug nor adds a feature.
-- perf: Improve performance.
-- test: Add missing or correct existing tests.
-- chore: Other commits that don’t modify src or test files.
+- feat: 新特性或功能
+- fix: 缺陷修复
+- docs: 文档更新
+- style: 代码风格或者组件样式更新
+- refactor: 代码重构，不引入新功能和缺陷修复
+- perf: 性能优化
+- test: 单元测试
+- chore: 其他不修改 src 或测试文件的提交
 
+## Web-Vue 项目结构
 
-## Arco-Vue Repository Structure
+本仓库使用lerna管理，包括以下packages：
 
-This repository is managed by lerna and includes the following packages:
+1. `web-vue`: Vue组件库
 
-1. `web-vue`: UI component library
-2. `vue-site`: Component documentation site
-3. `arco-vue-scripts`: Component scripts
-4. `arco-vue-md-loader`: Webpack loader for markdown parsing
-5. `arco-vue-site-nav`: Navigation bar of documentation site (using React materials)
-
-### Web-Vue Component Directory
+### Web-Vue 组件目录
 
 > components/componentName
 
 ```
-├── README.zh-CN.md (Note:Don't edit this file, it's generated by script)
-├── README.en-US.md (Note:Don't edit this file, it's generated by script)
-├── TEMPLATE.md (Template used to generate README file)
+├── README.zh-CN.md (注意：不要编辑这个文件，它是由脚本自动生成的)
+├── README.en-US.md (注意：不要编辑这个文件，它是由脚本自动生成的)
+├── TEMPLATE.md (用于生成 README 文件的模板)
 ├── __test__
 │   ├── __snapshots__
-│   │   └── demo.test.js.snap (Snapshot)
-│   ├── demo.test.ts (Snapshot test)
-│   └── index.test.ts (Unit test)
-├── __demo__ (Demos for each component)
+│   │   └── demo.test.js.snap
+│   ├── demo.test.ts (快照测试)
+│   └── index.test.ts (单元测试)
+├── __demo__ (组件演示)
 │   ├── basic.md
 │   └── advanced.md
-├── index.tsx(Component export)
+├── index.tsx(组件导出)
 └── style
-    └── index.less(Component style)
-    └── index.ts (Component style entry)
+    └── index.less(组件样式)
+    └── index.ts (组件样式导出)
 ```
 
-Please note that if you make changes that will affect README (e.g. API changes), make sure to run `npm run docgen` to update README of the component.
+请注意: 如果进行了会影响 README 的变更(例如 API 变更)，请确保运行 `npm run docgen` 来更新组件的 README。
 
-For scripts related to the component library, please run under the `web-vue` directory.
+组件库的相关操作在`web-vue`目录下操作.
 
 ## License
 
-By contributing your code to the repository, you agree to license your contribution under the [MIT license](./LICENSE).
+[MIT 协议](./LICENSE).

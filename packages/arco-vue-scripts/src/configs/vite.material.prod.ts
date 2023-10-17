@@ -43,7 +43,7 @@ const getConfig = ({
               '@arco-design/web-vue': 'ArcoVue',
               '@arco-design/web-vue/es/icon': 'ArcoVueIcon',
             },
-            plugins: [terser()],
+            plugins: [terser() as any],
           },
         ],
       },

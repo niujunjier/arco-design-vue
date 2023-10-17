@@ -14,7 +14,6 @@ import CellCode from './components/cell-code/index.vue';
 import 'prismjs/themes/prism.css';
 import 'nprogress/nprogress.css';
 import '@web-vue/components/index.less';
-import '@arco-design/arco-vue-docs-navbar/dist/style.css';
 import { getLocalStorage, setLocalStorage } from './utils/local-storage';
 import { checkLogin } from './utils/login';
 
